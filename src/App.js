@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import KeyboardSmall from './components/keyboards/KeyboardSmall';
 import RootSelector from './components/chordSelection/RootSelector';
@@ -9,50 +11,77 @@ import KeyboardContainer from './components/keyboards/KeyboardContainer';
 
 const App = () => {
   // ===========================
-  // CHORD STATE
-  const [currentRoot, setCurrentRoot] = useState('C');
+  // CHORD SETTINGS
+  const [rootNote, setrootNote] = useState('C');
   const [chordShape, setChordShape] = useState(
-    chordsDB.smallKeyboard.major.triad
+    chordsDB.smallKeyboard.major.standard
   );
-  const [currentChord, setCurrentChord] = useState({});
+  const [chord, setChord] = useState({});
+  const [mode, setMode] = useState('major');
+  const [voicing, setVoicing] = useState('standard');
+  const [inversion, setInversion] = useState('root');
 
   // ===========================
-  // DISPLAY STATE
+  // DISPLAY SETTINGS
   const [showNoteNames, setShowNoteNames] = useState(true);
   const [showNoteNumbering, setShowNoteNumbering] = useState(true);
   const [keyboardSize, setKeyboardSize] = useState('small');
 
+  // ===========================
+  // UPDATE CHORD NOTES
   useEffect(() => {
     const notesOfChord = {};
 
-    chordShape.root[currentRoot].forEach(note => {
+    chordShape.root[rootNote][inversion].forEach(note => {
       notesOfChord[note] = true;
     });
 
-    setCurrentChord(notesOfChord);
-  }, [chordShape, currentRoot]);
+    setChord(notesOfChord);
+  }, [chordShape, rootNote, inversion]);
+
+  // ===========================
+  // UPDATE CHORD SHAPE ON SELECTION CHANGES
+  useEffect(() => {
+    setChordShape(
+      chordsDB[`${keyboardSize}Keyboard`][mode][voicing] ||
+        chordsDB[`${keyboardSize}Keyboard`][mode]['standard']
+    );
+  }, [mode, keyboardSize, mode, voicing]);
 
   return (
     <div>
       {keyboardSize === 'small' && (
         <KeyboardSmall
-          chord={currentChord}
+          chord={chord}
           showNoteNumbering={showNoteNumbering}
           showNoteNames={showNoteNames}
         />
       )}
-
-      <RootSelector onRootChange={setCurrentRoot} />
-      <Checkbox label="Show note names" handleChange={setShowNoteNames} />
+      <RootSelector onRootChange={setrootNote} />
+      <Checkbox label="Show note names" onChange={setShowNoteNames} />
       <Checkbox
         label="Show note numbering"
-        handleChange={setShowNoteNumbering}
+        onChange={setShowNoteNumbering}
         isEnabled={showNoteNames}
       />
-
       <Dropdown
-        label="Mode"
+        label="Chord"
         options={Object.keys(chordsDB[`${keyboardSize}Keyboard`])}
+        onChange={setMode}
+      />
+      <Dropdown
+        label="Voicing"
+        options={Object.keys(chordsDB[`${keyboardSize}Keyboard`][mode])}
+        onChange={setVoicing}
+      />
+      <Dropdown
+        label="Inversion"
+        options={
+          Object.entries(chord).length === 3
+            ? ['root', 'first', 'second']
+            : ['root', 'first', 'second', 'third']
+        }
+        onChange={setInversion}
       />
     </div>
   );

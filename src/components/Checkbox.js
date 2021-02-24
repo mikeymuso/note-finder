@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Checkbox = ({
   label,
-  handleChange,
+  onChange,
   initialValue = true,
   isEnabled = true,
 }) => {
@@ -10,7 +10,7 @@ const Checkbox = ({
 
   const handleCheck = () => {
     setChecked(!checked);
-    handleChange(!checked);
+    onChange(!checked);
   };
 
   return (
