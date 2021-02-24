@@ -11,6 +11,8 @@ const KeyboardSmall = ({ chord, showNoteNumbering, showNoteNames }) => {
     whiteKeyColor: 'black',
   };
 
+  console.log(chord);
+
   return (
     <div>
       <svg
@@ -362,7 +364,7 @@ const KeyboardSmall = ({ chord, showNoteNumbering, showNoteNames }) => {
                 fill="#ff0f0f"
                 stroke="#620000"
                 strokeWidth="1"
-                opacity={chord.G3 ? 1 : 0}
+                opacity={chord.G3 || chord.Fds3 ? 1 : 0}
               >
                 <ellipse cx="19" cy="19.5" rx="19" ry="19.5" stroke="none" />
                 <ellipse cx="19" cy="19.5" rx="18.5" ry="19" fill="none" />
@@ -406,7 +408,7 @@ const KeyboardSmall = ({ chord, showNoteNumbering, showNoteNames }) => {
                 fill="#ff0f0f"
                 stroke="#620000"
                 strokeWidth="1"
-                opacity={chord.D4 ? 1 : 0}
+                opacity={chord.D4 || chord.Cds4 ? 1 : 0}
               >
                 <circle cx="19.5" cy="19.5" r="19.5" stroke="none" />
                 <circle cx="19.5" cy="19.5" r="19" fill="none" />
@@ -941,6 +943,93 @@ const KeyboardSmall = ({ chord, showNoteNumbering, showNoteNames }) => {
                   <tspan x="5" y="0">
                     B
                   </tspan>
+                )}
+              </text>
+              <text
+                id="text_Fds3"
+                transform="translate(252 1510)"
+                fill={style.whiteKeyTextColor}
+                fontSize={style.fontSize}
+                fontFamily={style.fontFamily}
+                opacity={chord.Fds3 && showNoteNames ? 1 : 0}
+              >
+                {showNoteNumbering ? (
+                  <>
+                    <tspan x="0" y="0">
+                      F
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                    <tspan y="0">3</tspan>
+                  </>
+                ) : (
+                  <>
+                    <tspan x="5" y="0">
+                      F
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                  </>
+                )}
+              </text>
+              <text
+                id="text_Fds4"
+                transform="translate(676 1510)"
+                fill={style.whiteKeyTextColor}
+                fontSize={style.fontSize}
+                fontFamily={style.fontFamily}
+                opacity={chord.Fds4 && showNoteNames ? 1 : 0}
+              >
+                {showNoteNumbering ? (
+                  <>
+                    <tspan x="0" y="0">
+                      F
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                    <tspan y="0">4</tspan>
+                  </>
+                ) : (
+                  <>
+                    <tspan x="5" y="0">
+                      F
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                  </>
+                )}
+              </text>
+              <text
+                id="text_Cds4"
+                transform="translate(491 1510)"
+                fill={style.whiteKeyTextColor}
+                fontSize={style.fontSize}
+                fontFamily={style.fontFamily}
+                opacity={chord.Cds4 && showNoteNames ? 1 : 0}
+              >
+                {showNoteNumbering ? (
+                  <>
+                    <tspan x="0" y="0">
+                      C
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                    <tspan y="0">3</tspan>
+                  </>
+                ) : (
+                  <>
+                    <tspan x="5" y="0">
+                      C
+                    </tspan>
+                    <tspan y="0" fontSize="16">
+                      ##
+                    </tspan>
+                  </>
                 )}
               </text>
             </g>
