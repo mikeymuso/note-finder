@@ -1,22 +1,21 @@
 import React from 'react';
-import KeyboardSmall from './KeyboardSmall';
+import KeyboardLarge from './KeyboardLarge';
 
 const KeyboardContainer = props => {
-  console.log(props.chord);
+  const style = {
+    width: '90vw',
+    overflow: 'scroll',
+    border: '2px solid black',
+    margin: '20px auto',
+  };
 
   return (
-    <div>
-      {props.size === 'small' ? (
-        <KeyboardSmall
-          chord={props.currentChord}
-          showNoteNumbering={props.showNoteNumbering}
-          showNoteNames={props.showNoteNames}
-        />
-      ) : props.size === 'medium' ? (
-        'MEDIUM'
-      ) : (
-        'LARGE'
-      )}
+    <div style={style}>
+      <KeyboardLarge
+        chord={props.chord}
+        showNoteNumbering={props.showNoteNumbering}
+        showNoteNames={props.showNoteNames}
+      />
     </div>
   );
 };

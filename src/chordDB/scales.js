@@ -45,3 +45,5 @@ export const fullScale = [
   'Cb',
   'Bs',
 ];
+
+export const whiteNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];

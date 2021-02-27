@@ -441,7 +441,7 @@ const KeyboardSmall = ({ chord, showNoteNumbering, showNoteNames }) => {
                 fill="#ff0f0f"
                 stroke="#620000"
                 strokeWidth="1"
-                opacity={chord.G4 ? 1 : 0}
+                opacity={chord.G4 || chord.Fds4 ? 1 : 0}
               >
                 <circle cx="19.5" cy="19.5" r="19.5" stroke="none" />
                 <circle cx="19.5" cy="19.5" r="19" fill="none" />
