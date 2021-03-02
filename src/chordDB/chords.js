@@ -34,12 +34,6 @@ export const chordsDB = {
         RHstart: 4,
       },
     },
-    open: {
-      LH: ['1', 'b7'],
-      RH: ['1', '5', '10'],
-      LHstart: 3,
-      RHstart: 4,
-    },
   },
   minor: {
     standard: {

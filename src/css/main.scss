@@ -1,3 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   cursor: pointer;
+  background-color: #171717;
+  width: 100vw;
+}
+
+header {
+  width: 100vw;
+  margin: 0 auto;
+
+  .header-svg {
+    padding: 8px 60px;
+  }
+}
+
+.control-label {
+  width: 90vw;
+  margin: 6px auto;
+  font-family: HelveticaNeue, Helvetica Neue;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+// ====================================
+// Keyboard SVG
+
+.keyboard-container {
+  width: 90vw;
+  overflow: scroll;
+  border: 2px solid black;
+  margin: 20px auto;
+}
+
+.keyboard-large-svg {
+  animation-name: scrollOnLoad;
+  animation-duration: 3s;
+}
+
+@keyframes scrollOnLoad {
+  0% {
+  }
+  33% {
+    transform: translate(300px, -91px);
+  }
+  66% {
+    transform: translate(-300px, -91px);
+  }
+  100% {
+    transform: translate(0px, -91px);
+  }
+}
+
+// ====================================
+// Root Selector SVG
+.root-selector {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  // grid-template-columns: repeat(7, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  gap: 4px 2px;
+
+  .root-select-button {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-content: center;
+    // text-align: center;
+    font-size: 20px;
+    font-family: HelveticaNeue, Helvetica Neue;
+    cursor: pointer;
+
+    p {
+      padding-bottom: 5px;
+    }
+  }
 }

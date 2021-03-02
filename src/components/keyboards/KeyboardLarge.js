@@ -99,7 +99,11 @@ const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames }) => {
         height={height}
         viewBox="0 0 3153 436"
       >
-        <g id="kbd-lg" transform="translate(0 -91)">
+        <g
+          id="kbd-lg"
+          className="keyboard-large-svg"
+          transform="translate(0 -91)"
+        >
           <g id="keys">
             <g id="white_keys">
               <g id="wk_octave_0">

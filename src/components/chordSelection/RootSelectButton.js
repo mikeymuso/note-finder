@@ -1,17 +1,12 @@
 import React from 'react';
 
-const RootSelectButton = ({ noteName, handleClick }) => {
+const RootSelectButton = ({ noteName, handleClick, colors, active }) => {
   const style = {
-    backgroundColor: 'yellow',
-    width: '35px',
-    height: '35px',
-    display: 'grid',
-    placeContent: 'center',
-    border: '1px solid red',
-    textAlign: 'center',
-    fontSize: '20px',
-    fontFamily: 'HelveticaNeue, Helvetica Neue',
-    cursor: 'pointer',
+    backgroundColor: colors.rootSelector.background,
+    border: `2px solid ${
+      active ? colors.rootSelector.active : colors.rootSelector.border
+    }`,
+    color: colors.rootSelector.font,
   };
 
   const noteDataName =
@@ -23,8 +18,12 @@ const RootSelectButton = ({ noteName, handleClick }) => {
       : noteName;
 
   return (
-    <div style={style} onClick={() => handleClick(noteDataName)}>
-      {noteName}
+    <div
+      className="root-select-button"
+      style={style}
+      onClick={() => handleClick(noteDataName)}
+    >
+      <p>{noteName.replace('s', '#')}</p>
     </div>
   );
 };

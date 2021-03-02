@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import KeyboardLarge from './KeyboardLarge';
 
 const KeyboardContainer = props => {
-  const style = {
-    width: '90vw',
-    overflow: 'scroll',
-    border: '2px solid black',
-    margin: '20px auto',
-  };
+  const keyboardContainer = useRef(null);
+
+  useEffect(() => {
+    keyboardContainer.current.scrollLeft = 555;
+  }, []);
 
   return (
-    <div style={style}>
+    <div className="keyboard-container" ref={keyboardContainer}>
       <KeyboardLarge
         chord={props.chord}
         showNoteNumbering={props.showNoteNumbering}

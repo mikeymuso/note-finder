@@ -5,6 +5,8 @@ import { scales, fullScale, whiteNotes } from './chordDB/scales';
 import Checkbox from './components/Checkbox';
 import Dropdown from './components/Dropdown';
 import KeyboardContainer from './components/keyboards/KeyboardContainer';
+import Header from './components/Header';
+import './css/main.css';
 
 const App = () => {
   // ===========================
@@ -22,6 +24,35 @@ const App = () => {
   const [showNoteNames, setShowNoteNames] = useState(true);
   const [showNoteNumbering, setShowNoteNumbering] = useState(true);
   const [showLeftHand, setShowLeftHand] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
+
+  const colors = {
+    darkMode: {
+      headerBackground: '#171717',
+      borderLight: '#D3D3D3',
+      borderContrast: '#A30000',
+      backgroundColor: '#171717',
+      innerToggle: '#2C2C2C',
+      rootSelector: {
+        background: '#171717',
+        border: '#333333',
+        font: '#D3D3D3',
+        active: '#A30000',
+      },
+    },
+    lightMode: {
+      headerBackground: '#373A40',
+      borderLight: '#FFFFFF',
+      borderContrast: '#19D3DA',
+      backgroundColor: '#EEEEEE',
+      innerToggle: '#EEEEEE',
+      rootSelector: {
+        background: '#171717',
+        border: '#D3D3D3',
+        font: '#D3D3D3',
+      },
+    },
+  };
 
   // ===========================
   // UPDATE CHORD NOTES
@@ -144,14 +175,20 @@ const App = () => {
 
   return (
     <div>
+      <Header colors={darkMode ? colors.darkMode : colors.lightMode} />
       <KeyboardContainer
         chord={chord}
         showNoteNumbering={showNoteNumbering}
         showNoteNames={showNoteNames}
       />
-      <RootSelector onRootChange={setrootNote} />
+      <RootSelector
+        onRootChange={setrootNote}
+        colors={darkMode ? colors.darkMode : colors.lightMode}
+        activeNote={rootNote}
+      />
       <Checkbox label="Show note names" onChange={setShowNoteNames} />
       <Checkbox label="Show Left Hand" onChange={setShowLeftHand} />
+      <Checkbox label="Dark mode" onChange={setDarkMode} />
       <Checkbox
         label="Show note numbering"
         onChange={setShowNoteNumbering}

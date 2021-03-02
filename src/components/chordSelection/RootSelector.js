@@ -1,35 +1,53 @@
 import React from 'react';
 import RootSelectButton from './RootSelectButton';
 
-const RootSelector = ({ onRootChange }) => {
+const RootSelector = ({ onRootChange, activeNote, colors }) => {
   const handleClick = noteName => {
-    console.log(`${noteName} clicked`);
     onRootChange(noteName);
   };
 
-  const style = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(7, 35px)',
-    gap: '2px 4px',
-  };
+  const roots = [
+    'C',
+    'Cs',
+    'Db',
+    'D',
+    'Ds',
+    'Eb',
+    'E',
+    'F',
+    'Fs',
+    'Gb',
+    'G',
+    'Gs',
+    'Ab',
+    'A',
+    'As',
+    'Bb',
+    'B',
+  ];
+
+  const renderedButtons = roots.map(root => {
+    return (
+      <RootSelectButton
+        key={root}
+        noteName={root}
+        handleClick={handleClick}
+        colors={colors}
+        active={activeNote === root}
+      />
+    );
+  });
 
   return (
-    <div style={style}>
-      <RootSelectButton noteName="C" handleClick={handleClick} />
-      <RootSelectButton noteName="C#" handleClick={handleClick} />
-      <RootSelectButton noteName="Db" handleClick={handleClick} />
-      <RootSelectButton noteName="D" handleClick={handleClick} />
-      <RootSelectButton noteName="D#" handleClick={handleClick} />
-      <RootSelectButton noteName="Eb" handleClick={handleClick} />
-      <RootSelectButton noteName="E" handleClick={handleClick} />
-      <RootSelectButton noteName="F" handleClick={handleClick} />
-      <RootSelectButton noteName="F#" handleClick={handleClick} />
-      <RootSelectButton noteName="Gb" handleClick={handleClick} />
-      <RootSelectButton noteName="A" handleClick={handleClick} />
-      <RootSelectButton noteName="A#" handleClick={handleClick} />
-      <RootSelectButton noteName="Bb" handleClick={handleClick} />
-      <RootSelectButton noteName="B" handleClick={handleClick} />
-    </div>
+    <>
+      <h2
+        className="control-label"
+        style={{ color: 'white', fontFamily: colors.rootSelector.font }}
+      >
+        Select root note
+      </h2>
+      <div className="root-selector">{renderedButtons}</div>
+    </>
   );
 };
 
