@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import RootSelector from './components/chordSelection/RootSelector';
+
+// ===========================
+// Data
 import { chordsDB } from './chordDB/chords';
 import { scales, fullScale, whiteNotes } from './chordDB/scales';
+
+// ===========================
+// CSS/Colors
+import './css/main.css';
+import { appColors } from './components/Colors';
+
+// ===========================
+// Components
+import RootSelector from './components/chordSelection/RootSelector';
+import KeyboardKey from './components/KeyboardKey';
+import Footer from './components/Footer';
 import Checkbox from './components/Checkbox';
 import Dropdown from './components/Dropdown';
 import KeyboardContainer from './components/keyboards/KeyboardContainer';
 import Header from './components/Header';
-import './css/main.css';
-import KeyboardKey from './components/KeyboardKey';
 
 const App = () => {
   // ===========================
@@ -25,50 +36,15 @@ const App = () => {
   const [showNoteNames, setShowNoteNames] = useState(true);
   const [showNoteNumbering, setShowNoteNumbering] = useState(true);
   const [showLeftHand, setShowLeftHand] = useState(true);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+  const [colors, setColors] = useState(appColors.darkMode);
 
-  const colors = {
-    darkMode: {
-      color: 'white',
-      headerBackground: '#171717',
-      borderLight: '#D3D3D3',
-      borderContrast: '#A30000',
-      backgroundColor: '#171717',
-      innerToggle: '#2C2C2C',
-      rootSelector: {
-        background: '#171717',
-        border: '#333333',
-        font: '#D3D3D3',
-        active: '#A30000',
-      },
-      dropdown: {
-        background: '#171717',
-        border: '#333333',
-      },
-      checkbox: {
-        background: '#171717',
-      },
-    },
-    lightMode: {
-      color: 'black',
-      headerBackground: '#373A40',
-      borderLight: '#FFFFFF',
-      borderContrast: '#19D3DA',
-      backgroundColor: '#EEEEEE',
-      innerToggle: '#EEEEEE',
-      rootSelector: {
-        background: '#171717',
-        border: '#D3D3D3',
-        font: '#D3D3D3',
-      },
-      dropdown: {
-        background: '#373A40',
-      },
-    },
-  };
+  // Set colors for dark/light mode
+  useEffect(() => {
+    setColors(darkMode ? appColors.darkMode : appColors.lightMode);
+  }, [darkMode]);
 
-  // ===========================
-  // UPDATE CHORD NOTES
+  // Update notes of chord to pass to Keyboard SVG
   useEffect(() => {
     const notesOfChord = {};
     const scale = scales[rootNote];
@@ -78,6 +54,7 @@ const App = () => {
       let prevNoteIndex = 0;
       let prevIntervalNumber = 0;
 
+      // Calculate note value & octave for each interval in the array
       hand.forEach(note => {
         // Convert flat/sharp symbols to variables
         const diminished = note.split('').indexOf('b') !== -1;
@@ -91,7 +68,7 @@ const App = () => {
           startOct += 1;
         }
 
-        // Store previous interval value
+        // Store previous interval value to check intervals larger than 1 octave
         prevIntervalNumber = strippedNote;
 
         // Calculate from array of one octave with MATH and stuff
@@ -111,9 +88,6 @@ const App = () => {
         const isSharp = noteName.match(/[A-Z]s/);
         const isFlat = noteName.includes('b');
         const isDoubleSharp = noteName.includes('ds');
-
-        // console.log({ diminished, augmented, strippedNote });
-        // console.log({ noteName, noteIndex, isSharp, isFlat, isDoubleSharp });
 
         if (diminished) {
           if (isDoubleSharp) {
@@ -187,34 +161,35 @@ const App = () => {
   }, [mode, voicing, inversion]);
 
   return (
-    <div>
-      <Header colors={darkMode ? colors.darkMode : colors.lightMode} />
+    <main style={{ backgroundColor: colors.backgroundColor }}>
+      <Header colors={colors} />
       <KeyboardContainer
+        colors={colors}
         chord={chord}
         showNoteNumbering={showNoteNumbering}
         showNoteNames={showNoteNames}
       />
-      <KeyboardKey colors={darkMode ? colors.darkMode : colors.lightMode} />
+      <KeyboardKey colors={colors} />
       <RootSelector
         onRootChange={setrootNote}
-        colors={darkMode ? colors.darkMode : colors.lightMode}
+        colors={colors}
         activeNote={rootNote}
       />
 
       <Dropdown
-        colors={darkMode ? colors.darkMode : colors.lightMode}
+        colors={colors}
         label="Select Chord"
         options={Object.keys(chordsDB)}
         onChange={setMode}
       />
       <Dropdown
-        colors={darkMode ? colors.darkMode : colors.lightMode}
+        colors={colors}
         label="Select Voicing"
         options={Object.keys(chordsDB[mode])}
         onChange={setVoicing}
       />
       <Dropdown
-        colors={darkMode ? colors.darkMode : colors.lightMode}
+        colors={colors}
         label="Inversion"
         options={Object.keys(chordsDB[mode][voicing])}
         onChange={setInversion}
@@ -223,26 +198,23 @@ const App = () => {
         <Checkbox
           label="Show note names"
           onChange={setShowNoteNames}
-          colors={darkMode ? colors.darkMode : colors.lightMode}
+          colors={colors}
         />
         <Checkbox
           label="Show note numbering"
           onChange={setShowNoteNumbering}
           isEnabled={showNoteNames}
-          colors={darkMode ? colors.darkMode : colors.lightMode}
+          colors={colors}
         />
         <Checkbox
           label="Show Left Hand"
           onChange={setShowLeftHand}
-          colors={darkMode ? colors.darkMode : colors.lightMode}
+          colors={colors}
         />
-        <Checkbox
-          label="Dark mode"
-          onChange={setDarkMode}
-          colors={darkMode ? colors.darkMode : colors.lightMode}
-        />
+        <Checkbox label="Dark mode" onChange={setDarkMode} colors={colors} />
+        <Footer colors={colors} />
       </div>
-    </div>
+    </main>
   );
 };
 

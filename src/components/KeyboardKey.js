@@ -2,10 +2,10 @@ import React from 'react';
 
 const KeyboardKey = ({ colors }) => {
   const style = {
-    dot_stroke_LH: '#0018C4',
-    dot_stroke_RH: '#620000',
-    dot_fill_LH: '#6268FF',
-    dot_fill_RH: '#ff0f0f',
+    dot_stroke_LH: colors.keyboard.dot_stroke_LH,
+    dot_stroke_RH: colors.keyboard.dot_stroke_RH,
+    dot_fill_LH: colors.keyboard.dot_fill_LH,
+    dot_fill_RH: colors.keyboard.dot_fill_RH,
   };
 
   return (
@@ -23,7 +23,7 @@ const KeyboardKey = ({ colors }) => {
             data-name="Ellipse 103"
             fill="#ff0f0f"
             stroke="#620000"
-            stroke-width="10"
+            strokeWidth="10"
           >
             <circle cx="173" cy="173" r="173" stroke={style.dot_stroke_LH} />
             <circle cx="173" cy="173" r="168" fill={style.dot_fill_LH} />
@@ -43,7 +43,7 @@ const KeyboardKey = ({ colors }) => {
             data-name="Ellipse 103"
             fill="#ff0f0f"
             stroke="#620000"
-            stroke-width="10"
+            strokeWidth="10"
           >
             <circle cx="173" cy="173" r="173" stroke={style.dot_stroke_RH} />
             <circle cx="173" cy="173" r="168" fill={style.dot_fill_RH} />

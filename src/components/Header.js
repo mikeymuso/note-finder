@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ colors }) => {
   const headerStyle = {
-    borderBottom: '3px solid #A30000',
+    borderBottom: `3px solid ${colors.borderContrast}`,
+    backgroundColor: colors.headerBackground,
   };
 
   const SVGStyle = {

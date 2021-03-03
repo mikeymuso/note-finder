@@ -11,6 +11,7 @@ const KeyboardContainer = props => {
   return (
     <div className="keyboard-container" ref={keyboardContainer}>
       <KeyboardLarge
+        colors={props.colors}
         chord={props.chord}
         showNoteNumbering={props.showNoteNumbering}
         showNoteNames={props.showNoteNames}

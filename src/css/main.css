@@ -32,7 +32,6 @@ header .header-svg {
 .keyboard-container {
   width: 90vw;
   overflow: scroll;
-  border: 2px solid black;
   margin: 20px auto 0 auto;
 }
 
@@ -121,7 +120,7 @@ header .header-svg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 15px 0 0 0;
+  padding: 5px 0 0 0;
 }
 
 .checkbox-container .checkbox .checkbox-label {
@@ -157,7 +156,7 @@ header .header-svg {
 
 .keyboard-key {
   width: 90vw;
-  margin: 0 auto 20px auto;
+  margin: 4px auto 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,5 +183,13 @@ header .header-svg {
 
 .keyboard-key .key-LH {
   padding-right: 10px;
+}
+
+footer {
+  width: 90vw;
+  padding: 20px 0;
+  font-style: italic;
+  text-align: center;
+  font-size: 0.8em;
 }
 /*# sourceMappingURL=main.css.map */

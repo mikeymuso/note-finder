@@ -1,6 +1,6 @@
 import React from 'react';
 
-const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames }) => {
+const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames, colors }) => {
   const height = 436 / 2.5;
   const width = 3153 / 2.5;
 
@@ -9,12 +9,12 @@ const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames }) => {
   const style = {
     fontFamily: 'HelveticaNeue, Helvetica Neue',
     fontSize: '20',
-    blackKeyTextColor: 'white',
-    whiteKeyColor: 'black',
-    dot_stroke_LH: '#0018C4',
-    dot_stroke_RH: '#620000',
-    dot_fill_LH: '#6268FF',
-    dot_fill_RH: '#ff0f0f',
+    blackKeyTextColor: colors.keyboard.blackKeyTextColor,
+    whiteKeyColor: colors.keyboard.whiteKeyColor,
+    dot_stroke_LH: colors.keyboard.dot_stroke_LH,
+    dot_stroke_RH: colors.keyboard.dot_stroke_RH,
+    dot_fill_LH: colors.keyboard.dot_fill_LH,
+    dot_fill_RH: colors.keyboard.dot_fill_RH,
     clear_dot_color: 'rgba(0,0,0,0)',
   };
 
