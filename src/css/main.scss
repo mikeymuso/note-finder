@@ -8,6 +8,7 @@ body {
   cursor: pointer;
   background-color: #171717;
   width: 100vw;
+  font-family: HelveticaNeue, Helvetica Neue;
 }
 
 header {
@@ -62,15 +63,13 @@ header {
   width: 90vw;
   margin: 0 auto;
   display: grid;
-  // grid-template-columns: repeat(7, 40px);
   grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-  gap: 4px 2px;
+  gap: 4px 4px;
 
   .root-select-button {
     aspect-ratio: 1 / 1;
     display: grid;
     place-content: center;
-    // text-align: center;
     font-size: 20px;
     font-family: HelveticaNeue, Helvetica Neue;
     cursor: pointer;
@@ -78,5 +77,50 @@ header {
     p {
       padding-bottom: 5px;
     }
+  }
+}
+
+// ====================================
+// Checkbox
+.checkbox-container {
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 10px;
+
+  .checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0 0 0;
+
+    .checkbox-label {
+      padding: 10px 8px 10px 0px;
+    }
+
+    .checkbox-input {
+      display: block;
+    }
+  }
+}
+
+// ====================================
+// Checkbox
+.dropdown {
+  width: 90vw;
+  margin: 10px auto 0 auto;
+  text-align: left;
+
+  .dropdown-label {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+  }
+
+  .dropdown-input {
+    height: 50px;
+    width: 100%;
+    font-size: 1em;
+    padding: 5px;
   }
 }

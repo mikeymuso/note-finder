@@ -9,6 +9,7 @@ body {
   cursor: pointer;
   background-color: #171717;
   width: 100vw;
+  font-family: HelveticaNeue, Helvetica Neue;
 }
 
 header {
@@ -83,7 +84,7 @@ header .header-svg {
   display: grid;
   -ms-grid-columns: (minmax(45px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-  gap: 4px 2px;
+  gap: 4px 4px;
 }
 
 .root-selector .root-select-button {
@@ -98,5 +99,52 @@ header .header-svg {
 
 .root-selector .root-select-button p {
   padding-bottom: 5px;
+}
+
+.checkbox-container {
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.checkbox-container .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0 0 0;
+}
+
+.checkbox-container .checkbox .checkbox-label {
+  padding: 10px 8px 10px 0px;
+}
+
+.checkbox-container .checkbox .checkbox-input {
+  display: block;
+}
+
+.dropdown {
+  width: 90vw;
+  margin: 10px auto 0 auto;
+  text-align: left;
+}
+
+.dropdown .dropdown-label {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1em;
+}
+
+.dropdown .dropdown-input {
+  height: 50px;
+  width: 100%;
+  font-size: 1em;
+  padding: 5px;
 }
 /*# sourceMappingURL=main.css.map */

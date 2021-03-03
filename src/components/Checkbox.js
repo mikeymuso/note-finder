@@ -5,6 +5,7 @@ const Checkbox = ({
   onChange,
   initialValue = true,
   isEnabled = true,
+  colors,
 }) => {
   const [checked, setChecked] = useState(initialValue);
 
@@ -14,9 +15,16 @@ const Checkbox = ({
   };
 
   return (
-    <div>
-      <label htmlFor="noteNameSelector">{label}</label>
+    <div className="checkbox">
+      <label
+        className="checkbox-label"
+        style={{ color: colors.color }}
+        htmlFor="noteNameSelector"
+      >
+        {label}
+      </label>
       <input
+        className="checkbox-input"
         name="noteNameSelector"
         type="checkbox"
         checked={checked}

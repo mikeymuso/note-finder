@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 
-const Dropdown = ({ label, options, onChange }) => {
+const Dropdown = ({ label, options, onChange, colors }) => {
   const [selectedValue, setSelectedValue] = useState('');
+
+  const style = {
+    border: `1px solid ${colors.dropdown.border}`,
+    color: 'white',
+    backgroundColor: colors.dropdown.background,
+  };
+
+  const labelStyle = {
+    color: colors.color,
+  };
 
   const handleChange = value => {
     setSelectedValue(value);
@@ -13,9 +23,13 @@ const Dropdown = ({ label, options, onChange }) => {
   }
 
   return (
-    <div>
-      <label htmlFor={label}>{label}</label>
+    <div className="dropdown">
+      <label className="dropdown-label" style={labelStyle} htmlFor={label}>
+        {label}
+      </label>
       <select
+        style={style}
+        className="dropdown-input"
         name={label}
         value={selectedValue}
         onChange={e => handleChange(e.target.value)}

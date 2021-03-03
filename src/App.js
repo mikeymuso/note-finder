@@ -28,6 +28,7 @@ const App = () => {
 
   const colors = {
     darkMode: {
+      color: 'white',
       headerBackground: '#171717',
       borderLight: '#D3D3D3',
       borderContrast: '#A30000',
@@ -39,8 +40,16 @@ const App = () => {
         font: '#D3D3D3',
         active: '#A30000',
       },
+      dropdown: {
+        background: '#171717',
+        border: '#333333',
+      },
+      checkbox: {
+        background: '#171717',
+      },
     },
     lightMode: {
+      color: 'black',
       headerBackground: '#373A40',
       borderLight: '#FFFFFF',
       borderContrast: '#19D3DA',
@@ -50,6 +59,9 @@ const App = () => {
         background: '#171717',
         border: '#D3D3D3',
         font: '#D3D3D3',
+      },
+      dropdown: {
+        background: '#373A40',
       },
     },
   };
@@ -186,29 +198,48 @@ const App = () => {
         colors={darkMode ? colors.darkMode : colors.lightMode}
         activeNote={rootNote}
       />
-      <Checkbox label="Show note names" onChange={setShowNoteNames} />
-      <Checkbox label="Show Left Hand" onChange={setShowLeftHand} />
-      <Checkbox label="Dark mode" onChange={setDarkMode} />
-      <Checkbox
-        label="Show note numbering"
-        onChange={setShowNoteNumbering}
-        isEnabled={showNoteNames}
-      />
+
       <Dropdown
-        label="Chord"
+        colors={darkMode ? colors.darkMode : colors.lightMode}
+        label="Select Chord"
         options={Object.keys(chordsDB)}
         onChange={setMode}
       />
       <Dropdown
-        label="Voicing"
+        colors={darkMode ? colors.darkMode : colors.lightMode}
+        label="Select Voicing"
         options={Object.keys(chordsDB[mode])}
         onChange={setVoicing}
       />
       <Dropdown
+        colors={darkMode ? colors.darkMode : colors.lightMode}
         label="Inversion"
         options={Object.keys(chordsDB[mode][voicing])}
         onChange={setInversion}
       />
+      <div className="checkbox-container">
+        <Checkbox
+          label="Show note names"
+          onChange={setShowNoteNames}
+          colors={darkMode ? colors.darkMode : colors.lightMode}
+        />
+        <Checkbox
+          label="Show note numbering"
+          onChange={setShowNoteNumbering}
+          isEnabled={showNoteNames}
+          colors={darkMode ? colors.darkMode : colors.lightMode}
+        />
+        <Checkbox
+          label="Show Left Hand"
+          onChange={setShowLeftHand}
+          colors={darkMode ? colors.darkMode : colors.lightMode}
+        />
+        <Checkbox
+          label="Dark mode"
+          onChange={setDarkMode}
+          colors={darkMode ? colors.darkMode : colors.lightMode}
+        />
+      </div>
     </div>
   );
 };
