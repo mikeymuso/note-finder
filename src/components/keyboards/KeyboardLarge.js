@@ -1074,7 +1074,7 @@ const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames }) => {
                   id="Eb4"
                   width="35"
                   height="266"
-                  transform="translate(1503 93)"
+                  transform="translate(1503 91)"
                 />
                 <rect
                   id="Gb4"
