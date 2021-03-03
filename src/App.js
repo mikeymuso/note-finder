@@ -211,7 +211,12 @@ const App = () => {
           onChange={setShowLeftHand}
           colors={colors}
         />
-        <Checkbox label="Dark mode" onChange={setDarkMode} colors={colors} />
+        <Checkbox
+          label="Dark mode"
+          onChange={setDarkMode}
+          colors={colors}
+          initialValue={false}
+        />
         <Footer colors={colors} />
       </div>
     </main>
