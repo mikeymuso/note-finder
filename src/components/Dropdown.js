@@ -5,7 +5,7 @@ const Dropdown = ({ label, options, onChange, colors }) => {
 
   const style = {
     border: `1px solid ${colors.dropdown.border}`,
-    color: 'white',
+    color: colors.dropdown.color,
     backgroundColor: colors.dropdown.background,
   };
 

@@ -15,6 +15,7 @@ export const appColors = {
     dropdown: {
       background: '#171717',
       border: '#333333',
+      color: 'white',
     },
     checkbox: {
       background: '#171717',
@@ -43,6 +44,8 @@ export const appColors = {
     },
     dropdown: {
       background: '#686D76',
+      border: '#333333',
+      color: 'white',
     },
     keyboard: {
       blackKeyTextColor: 'white',

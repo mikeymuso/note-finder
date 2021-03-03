@@ -39,12 +39,12 @@ const RootSelector = ({ onRootChange, activeNote, colors }) => {
   });
 
   return (
-    <>
+    <div className="root-selector-container">
       <h2 className="control-label" style={{ color: colors.color }}>
         Select root note
       </h2>
       <div className="root-selector">{renderedButtons}</div>
-    </>
+    </div>
   );
 };
 

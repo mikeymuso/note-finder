@@ -5,7 +5,7 @@ const KeyboardContainer = props => {
   const keyboardContainer = useRef(null);
 
   useEffect(() => {
-    keyboardContainer.current.scrollLeft = 555;
+    keyboardContainer.current.scrollLeft = 380;
   }, []);
 
   return (

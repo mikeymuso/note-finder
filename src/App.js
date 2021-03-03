@@ -170,30 +170,35 @@ const App = () => {
         showNoteNames={showNoteNames}
       />
       <KeyboardKey colors={colors} />
-      <RootSelector
-        onRootChange={setrootNote}
-        colors={colors}
-        activeNote={rootNote}
-      />
+      <div className="selectors-container">
+        <RootSelector
+          onRootChange={setrootNote}
+          colors={colors}
+          activeNote={rootNote}
+        />
 
-      <Dropdown
-        colors={colors}
-        label="Select Chord"
-        options={Object.keys(chordsDB)}
-        onChange={setMode}
-      />
-      <Dropdown
-        colors={colors}
-        label="Select Voicing"
-        options={Object.keys(chordsDB[mode])}
-        onChange={setVoicing}
-      />
-      <Dropdown
-        colors={colors}
-        label="Inversion"
-        options={Object.keys(chordsDB[mode][voicing])}
-        onChange={setInversion}
-      />
+        <div className="dropdown-container">
+          <Dropdown
+            colors={colors}
+            label="Select Chord"
+            options={Object.keys(chordsDB)}
+            onChange={setMode}
+          />
+          <Dropdown
+            colors={colors}
+            label="Select Voicing"
+            options={Object.keys(chordsDB[mode])}
+            onChange={setVoicing}
+          />
+          <Dropdown
+            colors={colors}
+            label="Inversion"
+            options={Object.keys(chordsDB[mode][voicing])}
+            onChange={setInversion}
+          />
+        </div>
+      </div>
+
       <div className="checkbox-container">
         <Checkbox
           label="Show note names"
@@ -217,8 +222,9 @@ const App = () => {
           colors={colors}
           initialValue={false}
         />
-        <Footer colors={colors} />
       </div>
+
+      <Footer colors={colors} />
     </main>
   );
 };

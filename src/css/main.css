@@ -12,34 +12,48 @@ body {
   font-family: HelveticaNeue, Helvetica Neue;
 }
 
+main {
+  position: relative;
+}
+
+@media (min-width: 500px) {
+  main {
+    min-height: 100vh;
+    padding-bottom: 100px;
+  }
+}
+
 header {
   width: 100vw;
   margin: 0 auto;
 }
 
-header .header-svg {
+.header-svg {
   padding: 8px 60px;
 }
 
-.control-label {
-  width: 90vw;
-  margin: 6px auto;
-  font-family: HelveticaNeue, Helvetica Neue;
-  font-size: 1.2em;
-  font-weight: 400;
+@media (min-width: 500px) {
+  .header-svg {
+    height: 50px;
+  }
 }
 
 .keyboard-container {
   width: 90vw;
+  max-width: 1261.2px;
   overflow: scroll;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 20px auto 0 auto;
 }
 
-.keyboard-large-svg {
-  -webkit-animation-name: scrollOnLoad;
-          animation-name: scrollOnLoad;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+@media (max-width: 600px) {
+  .keyboard-large-svg {
+    -webkit-animation-name: scrollOnLoad;
+            animation-name: scrollOnLoad;
+    -webkit-animation-duration: 2.4s;
+            animation-duration: 2.4s;
+  }
 }
 
 @-webkit-keyframes scrollOnLoad {
@@ -80,14 +94,56 @@ header .header-svg {
   }
 }
 
-.root-selector {
+.selectors-container {
   width: 90vw;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .selectors-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.root-selector-container {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .root-selector-container {
+    width: 45%;
+  }
+}
+
+.root-selector-container .control-label {
+  width: 100%;
+  margin: 6px auto;
+  font-family: HelveticaNeue, Helvetica Neue;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.root-selector {
+  width: 100%;
   margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(45px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  -ms-grid-columns: (minmax(50px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   gap: 4px 4px;
+}
+
+@media (min-width: 900px) {
+  .root-selector {
+    width: 100%;
+    -ms-grid-columns: (minmax(50px, 50px))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(50px, 50px));
+  }
 }
 
 .root-selector .root-select-button {
@@ -110,6 +166,12 @@ header .header-svg {
   padding-top: 10px;
 }
 
+@media (min-width: 500px) {
+  .checkbox-container {
+    margin-top: 20px;
+  }
+}
+
 .checkbox-container .checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,6 +185,13 @@ header .header-svg {
   padding: 5px 0 0 0;
 }
 
+@media (min-width: 500px) {
+  .checkbox-container .checkbox {
+    width: 45%;
+    margin-left: auto;
+  }
+}
+
 .checkbox-container .checkbox .checkbox-label {
   padding: 10px 8px 10px 0px;
   font-size: 1em;
@@ -134,20 +203,36 @@ header .header-svg {
   width: 20px;
 }
 
-.dropdown {
-  width: 90vw;
+.dropdown-container {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .dropdown-container {
+    width: 45%;
+  }
+}
+
+.dropdown-container .dropdown {
+  width: 100%;
   margin: 10px auto 0 auto;
   text-align: left;
 }
 
-.dropdown .dropdown-label {
+@media (min-width: 900px) {
+  .dropdown-container .dropdown {
+    width: 100%;
+  }
+}
+
+.dropdown-container .dropdown .dropdown-label {
   display: block;
   width: 100%;
   padding: 10px 0;
   font-size: 1em;
 }
 
-.dropdown .dropdown-input {
+.dropdown-container .dropdown .dropdown-input {
   height: 50px;
   width: 100%;
   font-size: 1em;
@@ -156,6 +241,7 @@ header .header-svg {
 
 .keyboard-key {
   width: 90vw;
+  max-width: 1261.2px;
   margin: 4px auto 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,10 +272,17 @@ header .header-svg {
 }
 
 footer {
-  width: 90vw;
+  width: 100vw;
   padding: 20px 0;
   font-style: italic;
   text-align: center;
   font-size: 0.8em;
+}
+
+@media (min-width: 500px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
 }
 /*# sourceMappingURL=main.css.map */

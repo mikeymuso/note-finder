@@ -1,3 +1,26 @@
+// ====================================
+// Media sizes
+@mixin tablet-portrait-up {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+@mixin tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin large-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,21 +34,26 @@ body {
   font-family: HelveticaNeue, Helvetica Neue;
 }
 
-header {
-  width: 100vw;
-  margin: 0 auto;
+main {
+  position: relative;
 
-  .header-svg {
-    padding: 8px 60px;
+  @include tablet-portrait-up {
+    min-height: 100vh;
+    padding-bottom: 100px;
   }
 }
 
-.control-label {
-  width: 90vw;
-  margin: 6px auto;
-  font-family: HelveticaNeue, Helvetica Neue;
-  font-size: 1.2em;
-  font-weight: 400;
+header {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.header-svg {
+  padding: 8px 60px;
+
+  @include tablet-portrait-up {
+    height: 50px;
+  }
 }
 
 // ====================================
@@ -33,14 +61,17 @@ header {
 
 .keyboard-container {
   width: 90vw;
+  max-width: 1261.2px;
   overflow: scroll;
-  // border: 1px solid black;
+  box-sizing: border-box;
   margin: 20px auto 0 auto;
 }
 
 .keyboard-large-svg {
-  animation-name: scrollOnLoad;
-  animation-duration: 3s;
+  @media (max-width: 600px) {
+    animation-name: scrollOnLoad;
+    animation-duration: 2.4s;
+  }
 }
 
 @keyframes scrollOnLoad {
@@ -59,14 +90,46 @@ header {
 }
 
 // ====================================
-// Root Selector SVG
-.root-selector {
+// Selectors
+.selectors-container {
   width: 90vw;
-  // max-width: 360px;
+  margin: 0 auto;
+
+  @include tablet-landscape-up {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// ====================================
+// Root Selector
+.root-selector-container {
+  width: 100%;
+
+  @include tablet-landscape-up {
+    width: 45%;
+  }
+
+  .control-label {
+    width: 100%;
+    margin: 6px auto;
+    font-family: HelveticaNeue, Helvetica Neue;
+    font-size: 1.2em;
+    font-weight: 400;
+  }
+}
+
+.root-selector {
+  width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   gap: 4px 4px;
+
+  @include tablet-landscape-up {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 50px));
+  }
 
   .root-select-button {
     height: 50px;
@@ -89,11 +152,20 @@ header {
   margin: 0 auto;
   padding-top: 10px;
 
+  @include tablet-portrait-up {
+    margin-top: 20px;
+  }
+
   .checkbox {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 0 0 0;
+
+    @include tablet-portrait-up {
+      width: 45%;
+      margin-left: auto;
+    }
 
     .checkbox-label {
       padding: 10px 8px 10px 0px;
@@ -110,23 +182,35 @@ header {
 
 // ====================================
 // Dropdown
-.dropdown {
-  width: 90vw;
-  margin: 10px auto 0 auto;
-  text-align: left;
+.dropdown-container {
+  width: 100%;
 
-  .dropdown-label {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
-    font-size: 1em;
+  @include tablet-landscape-up {
+    width: 45%;
   }
 
-  .dropdown-input {
-    height: 50px;
+  .dropdown {
     width: 100%;
-    font-size: 1em;
-    padding: 5px;
+    margin: 10px auto 0 auto;
+    text-align: left;
+
+    @include tablet-landscape-up {
+      width: 100%;
+    }
+
+    .dropdown-label {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 1em;
+    }
+
+    .dropdown-input {
+      height: 50px;
+      width: 100%;
+      font-size: 1em;
+      padding: 5px;
+    }
   }
 }
 
@@ -134,6 +218,7 @@ header {
 // Keyboard Key
 .keyboard-key {
   width: 90vw;
+  max-width: 1261.2px;
   margin: 4px auto 20px auto;
   display: flex;
   justify-content: flex-end;
@@ -157,9 +242,14 @@ header {
 // ====================================
 // Footer
 footer {
-  width: 90vw;
+  width: 100vw;
   padding: 20px 0;
   font-style: italic;
   text-align: center;
   font-size: 0.8em;
+
+  @include tablet-portrait-up {
+    position: absolute;
+    bottom: 0;
+  }
 }
