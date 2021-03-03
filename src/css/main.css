@@ -33,7 +33,7 @@ header .header-svg {
   width: 90vw;
   overflow: scroll;
   border: 2px solid black;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 
 .keyboard-large-svg {
@@ -126,10 +126,13 @@ header .header-svg {
 
 .checkbox-container .checkbox .checkbox-label {
   padding: 10px 8px 10px 0px;
+  font-size: 1em;
 }
 
 .checkbox-container .checkbox .checkbox-input {
   display: block;
+  height: 20px;
+  width: 20px;
 }
 
 .dropdown {
@@ -150,5 +153,36 @@ header .header-svg {
   width: 100%;
   font-size: 1em;
   padding: 5px;
+}
+
+.keyboard-key {
+  width: 90vw;
+  margin: 0 auto 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.keyboard-key .key-LH,
+.keyboard-key .key-RH {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.keyboard-key .key-LH span,
+.keyboard-key .key-RH span {
+  display: block;
+  padding-right: 5px;
+  font-size: 0.8em;
+}
+
+.keyboard-key .key-LH {
+  padding-right: 10px;
 }
 /*# sourceMappingURL=main.css.map */

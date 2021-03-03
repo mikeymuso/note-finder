@@ -7,6 +7,7 @@ import Dropdown from './components/Dropdown';
 import KeyboardContainer from './components/keyboards/KeyboardContainer';
 import Header from './components/Header';
 import './css/main.css';
+import KeyboardKey from './components/KeyboardKey';
 
 const App = () => {
   // ===========================
@@ -193,6 +194,7 @@ const App = () => {
         showNoteNumbering={showNoteNumbering}
         showNoteNames={showNoteNames}
       />
+      <KeyboardKey colors={darkMode ? colors.darkMode : colors.lightMode} />
       <RootSelector
         onRootChange={setrootNote}
         colors={darkMode ? colors.darkMode : colors.lightMode}
