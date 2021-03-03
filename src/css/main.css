@@ -88,7 +88,7 @@ header .header-svg {
 }
 
 .root-selector .root-select-button {
-  aspect-ratio: 1 / 1;
+  height: 50px;
   display: -ms-grid;
   display: grid;
   place-content: center;
@@ -98,7 +98,7 @@ header .header-svg {
 }
 
 .root-selector .root-select-button p {
-  padding-bottom: 5px;
+  padding-bottom: 0px;
 }
 
 .checkbox-container {
