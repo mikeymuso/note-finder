@@ -4,7 +4,7 @@ const KeyboardLarge = ({ chord, showNoteNumbering, showNoteNames, colors }) => {
   const height = 436 / 2.5;
   const width = 3153 / 2.5;
 
-  console.log(chord);
+  console.log({ KBDInput: chord });
 
   const style = {
     fontFamily: 'HelveticaNeue, Helvetica Neue',

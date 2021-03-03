@@ -51,7 +51,7 @@ const App = () => {
 
     const calculateChordValues = (hand, startOctave, label) => {
       let startOct = startOctave;
-      let prevNoteIndex = 0;
+      let prevNoteIndex = null;
       let prevIntervalNumber = 0;
 
       // Calculate note value & octave for each interval in the array
@@ -129,7 +129,9 @@ const App = () => {
           }
         }
 
-        if (noteIndex <= prevNoteIndex) {
+        // Increase the octave where the next note is lower in the 12-note scale - therefore it must be in the next octave
+        // Checking for 'null' accounts for the first note of the chord being 0 (C)
+        if (noteIndex <= prevNoteIndex && prevNoteIndex !== null) {
           startOct += 1;
         }
 
@@ -146,8 +148,6 @@ const App = () => {
 
     showLeftHand && calculateChordValues(LH, LHstart, 'LH');
     calculateChordValues(RH, RHstart, 'RH');
-
-    console.log(notesOfChord);
 
     setChord(notesOfChord);
   }, [chordShape, rootNote, inversion, showLeftHand]);

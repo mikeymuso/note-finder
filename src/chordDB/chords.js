@@ -16,8 +16,8 @@ export const chordsDB = {
   major: {
     standard: {
       root: {
-        LH: ['1', 'b7'],
-        RH: ['1', '3', '5', '1'],
+        LH: ['1'],
+        RH: ['1'],
         LHstart: 3,
         RHstart: 4,
       },
@@ -30,7 +30,7 @@ export const chordsDB = {
       second: {
         LH: ['5', '5'],
         RH: ['5', '1', '3'],
-        LHstart: 2,
+        LHstart: 3,
         RHstart: 4,
       },
     },
@@ -53,10 +53,18 @@ export const chordsDB = {
   },
   diminished: {
     standard: {
-      LH: ['1', 'b7'],
-      RH: ['1', 'b3', 'b5', '6'],
-      LHstart: 3,
-      RHstart: 4,
+      root: {
+        LH: ['1', 'b7'],
+        RH: ['1', 'b3', 'b5', '6'],
+        LHstart: 3,
+        RHstart: 4,
+      },
+      first: {
+        LH: ['b3', '1'],
+        RH: ['b3', 'b5', '6', '1'],
+        LHstart: 3,
+        RHstart: 4,
+      },
     },
   },
 };
