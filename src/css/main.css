@@ -45,6 +45,8 @@ header .header-svg {
 
 @-webkit-keyframes scrollOnLoad {
   0% {
+    -webkit-transform: translate(0px, -91px);
+            transform: translate(0px, -91px);
   }
   33% {
     -webkit-transform: translate(300px, -91px);
@@ -62,6 +64,8 @@ header .header-svg {
 
 @keyframes scrollOnLoad {
   0% {
+    -webkit-transform: translate(0px, -91px);
+            transform: translate(0px, -91px);
   }
   33% {
     -webkit-transform: translate(300px, -91px);
